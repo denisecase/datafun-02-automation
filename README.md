@@ -37,34 +37,41 @@ Follow the detailed instructions at:
 
 ## 02: Set Up Project (Once Per Project)
 
-Detailed instructions are provided to:
+1. Get Repository: Sign in to GitHub, open this repository in your browser, and click **Copy this template** to get a copy in **YOURACCOUNT**.
 
-1. Sign in to GitHub, open this repository in your browser, and click **Copy this template** to get a copy in **YOURACCOUNT**.
-2. Enable GitHub Pages.
-3. Open a **machine terminal** in your `Repos` folder and clone your new repo.
-4. Change directory into the repo, open the project in VS Code, and install recommended extensions.
-5. Set up a project Python environment (managed by `uv`) and align VS Code with it.
+2. Configure Repository Settings:
+   - Select your repository **Settings** (the gear icon way on the right).
+   -  Go to **Pages** tab / Enable GitHub Pages / Build and deployment / set **Source** to **GitHub Actions**
+   -  Go to **Advanced Security** tab / Dependabot / **Dependabot security updates** / **Enable**
+   -  Go to **Advanced Security** tab / Dependabot / **Grouped security updates** / **Enable**
 
-Use the instructions above to get it ALL set up correctly.
-Most people open a terminal on their machine (not VS Code), open in their Repos folder and run:
+3. Clone to local: Open a **machine terminal** in your **`Repos`** folder and clone your new repo.
 
-```shell
-git clone https://github.com/YOURACCOUNT/datafun-02-automation
+  ```shell
+  git clone https://github.com/YOURACCOUNT/datafun-02-automation
+  ```
 
-cd datafun-02-automation
-code .
-```
+4. Open project in VS Code: Change directory into the repo and open the project in VS Code by running `code .` ("code dot"):
 
-When VS Code opens, accept the Extension Recommendations (click **`Install All`** or similar when asked).
+  ```shell
+  cd datafun-02-automation
+  code .
+  ```
 
-Use VS Code menu option `Terminal` / `New Terminal` to open a **VS Code terminal** in the root project folder.
-Run the following commands, one at a time, hitting ENTER after each:
+5. Install recommended extensions.
 
-```shell
-uv self update
-uv python pin 3.14
-uv sync --extra dev --extra docs --upgrade
-```
+   - When VS Code opens, accept the Extension Recommendations (click **`Install All`** or similar when asked).
+
+6. Set up a project Python environment (managed by `uv`) and align VS Code with it.
+
+   - Use VS Code menu option `Terminal` / `New Terminal` to open a **VS Code terminal** in the root project folder.
+   - Run the following commands, one at a time, hitting ENTER after each:
+
+    ```shell
+    uv self update
+    uv python pin 3.14
+    uv sync --extra dev --extra docs --upgrade
+    ```
 
 If asked: "We noticed a new environment has been created. Do you want to select it for the workspace folder?" Click **"Yes"**.
 
@@ -82,7 +89,7 @@ git add -A
 uvx pre-commit run --all-files
 ```
 
-Additional help and troubleshooting is available at:
+Fore more detailed instructions and troubleshooting, see the pro guide at:
 [**02. Set Up Your Project**](https://denisecase.github.io/pro-analytics-02/02-set-up-project/)
 
 🛑 Do not continue until all REQUIRED steps are complete and verified.
