@@ -189,8 +189,10 @@ Change each occurrence to point to your GitHub account instead (spacing and capi
 5. When it runs without errors, delete the associated TODO command.
 6. Keep working through each TODO.
 7. When you finish, there should be **zero TODO occurrences** in your project.
+8. Use VS Code menu **File / Save** to save your changes. OR better yet, ensure **File / Auto save** is checked.
+9. NOTE: I use File / Autosave (which works very well in VS Code), so I rarely remember to include File / Save in instructions. 
 
-**Save often**: After making any useful progress, follow the steps to git add-commit-push.
+**Save often**: After making any useful progress, follow the steps to git add-commit-push shown above.
 
 ---
 
