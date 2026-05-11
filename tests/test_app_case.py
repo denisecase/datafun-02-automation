@@ -13,7 +13,7 @@ Run:
   uv run python -m pytest
 """
 
-from datafun_02_automation import app_case
+from datafun import app_case
 
 
 def test_write_text_file_exists() -> None:
