@@ -1,13 +1,17 @@
 # Branching (P2)
 
-This page introduces **branching**: how a Python program makes decisions and chooses different paths of execution.
+This page introduces **branching**:
+how a Python program makes decisions and
+chooses different paths of execution.
 
 Branching depends directly on **operators**.
-If operators produce `True` or `False`, branching decides **what to do next**.
+If operators produce `True` or `False`,
+branching decides **what to do next**.
 
 ## What Is Branching?
 
-Branching is the ability of a program to execute different code blocks depending on a condition.
+Branching is the ability of a program to
+execute different code blocks depending on a condition.
 
 In Python, branching uses:
 

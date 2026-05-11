@@ -1,6 +1,13 @@
+// ============================================================
 // .vscode/settings.json
+// ============================================================
+// Updated 2026-04-15
+// NOTE: Comments are not allowed in standard JSON files,
+// but Microsoft allows them in their .vscode config files.
 {
   "editor.formatOnSave": false,
+  // Resolve paths from project root rather than kernel start location
+  "jupyter.notebookFileRoot": "${workspaceFolder}",
   "[python]": {
     "editor.defaultFormatter": "charliermarsh.ruff"
   },
@@ -10,13 +17,14 @@
   "[jsonc]": {
     "editor.defaultFormatter": "vscode.json-language-features"
   },
+  "[jupyter]": {
+    "editor.defaultFormatter": "ms-toolsai.jupyter"
+  },
   "[markdown]": {
-    "editor.defaultFormatter": "yzhang.markdown-all-in-one"
+    // 2026-04 changed to prettier for markdown files (e.g., README.md)
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[yaml]": {
-    "editor.defaultFormatter": "redhat.vscode-yaml"
-  },
-  "[yml]": {
     "editor.defaultFormatter": "redhat.vscode-yaml"
   },
   "[toml]": {

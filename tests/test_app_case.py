@@ -10,7 +10,7 @@ Assumptions:
 - pytest running from project root
 
 Run:
-  uv run pytest
+  uv run python -m pytest
 """
 
 from datafun_02_automation import app_case
