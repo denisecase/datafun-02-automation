@@ -1,4 +1,4 @@
-# Project Instructions (Module 4: Exploratory Data Analysis with Notebooks)
+# Project Instructions (DataFun Module 2)
 
 ## WEDNESDAY: Complete Workflow Phases 1-3
 
@@ -25,89 +25,47 @@ Again, follow the instructions above to complete:
 Make a small technical change to the example notebook that does not break it.
 Choose any one of these (or a different modification as you like):
 
-- Add a new Markdown cell with a section heading and one observation about the data
-- Change the color palette or chart style in a seaborn plot
-- Add a second chart of a different type (e.g., add a box plot alongside a histogram)
-- Add a cell that prints the number of missing values per column using `df.isnull().sum()`
-- Add a cell that filters the DataFrame to a subset of rows and re-runs a chart on the subset
+- Change `PET_LIST` to use three different animals
+- Change `FIRST_QUARTER` and `LAST_QUARTER` to create files for a different range
+- Change `FILE_COUNT` from `3` to another reasonably small number
+- Change the file name prefix from `case_` to another short word
+- Change the text written inside one type of generated file
 
 Re-run all cells after your change and confirm the notebook executes cleanly.
 Commit with output visible.
 
 ## Phase 5 Suggestions
 
-### Phase 5 Suggestion 1. EDA on a Built-in Dataset (Directed)
+For Phase 5, apply the same automation pattern to a new problem domain.
 
-Use seaborn's built-in datasets to perform EDA on a dataset different from the example.
+For example you might pick one of these domains instead (or another of your choice):
 
-Steps:
+- favorite foods
+- favorite cities
+- course names
+- product names
+- months
+- seasons
+- hobbies
+- book genres
+- music genres
 
-- Choose a dataset from seaborn (see list below)
-- Create a new notebook file: `notebooks/eda_yourname.ipynb`
-- Follow the same numbered section structure as the example
-- Include: shape, dtypes, missing values, descriptive statistics, and at least two charts
-- Add Markdown narrative cells explaining your observations after each section
-
-Good seaborn datasets for practice:
-
-- `tips` — restaurant tipping data (244 rows, 7 columns)
-- `iris` — flower measurements (150 rows, 5 columns)
-- `mpg` — car fuel efficiency (398 rows, 9 columns)
-- `titanic` — passenger survival data (891 rows, 15 columns)
-- `diamonds` — diamond prices and attributes (53940 rows, 10 columns)
-
-Load with: `df = sns.load_dataset('dataset_name')`
-
-Then:
-
-- Describe the dataset: what each column represents and where the data comes from
-- Identify one surprising or interesting pattern you found
-- Explain what a next analytical step might be (e.g., grouping, filtering, modeling)
-
-### Phase 5 Suggestion 2. EDA on Your Own Dataset (Original)
-
-Perform EDA on a dataset you bring yourself.
-
-Steps:
-
-- Find a tabular dataset (CSV) relevant to your field or interests
-  (e.g., from <https://www.kaggle.com>, <https://data.gov>, or your own work)
-- Place the file in `data/raw/`
-- Create a new notebook: `notebooks/eda_yourname.ipynb`
-- Load the data with `pd.read_csv()`
-- Follow the same numbered section structure as the example
-- Include: shape, dtypes, missing values, descriptive statistics, and at least two charts
-- Add Markdown narrative explaining your observations
-
-Then:
-
-- Cite the data source and describe what it contains
-- Identify at least one data quality issue you found (missing values, outliers, wrong types)
-- Describe what question you would investigate next if you had more time
+The goal is not to write a large application.
+The goal is to show that you can copy a working automation pattern,
+change it carefully, and run it successfully.
 
 ## Key Skill Focus
 
 As you work, focus on:
 
-- how notebooks combine narrative and code for exploratory work
-- how `df.info()`, `df.describe()`, and `df.isnull()` give a quick dataset overview
-- how distributions reveal shape, spread, and outliers
-- how grouping and filtering expose patterns within subsets
-- how Markdown narrative turns a notebook into a readable analysis
-
-Your goal is to produce a notebook that tells a clear story about a dataset.
+- how Python repeats work with `for` loops, `while` loops, and list comprehensions
+- how branching can help a program make decisions
+- how functions organize repeated logic
+- how constants make a program easier to modify
+- how `pathlib` helps create cross-platform file paths
+- how logging records what happened while the program ran
+- how generated files show the result of automation
 
 ## Professional Communication
 
-Make sure the title and narrative reflect your work.
-Verify key files:
-
-- README.md
-- docs/ (source and hosted on GitHub Pages)
-- notebooks/ (executed notebooks committed with output visible)
-
-Ensure your project clearly demonstrates:
-
-- a complete EDA with all standard sections
-- at least two meaningful charts with narrative
-- a readable notebook someone else could follow
+Make sure your project clearly shows what you changed.

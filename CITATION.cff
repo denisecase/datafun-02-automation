@@ -12,8 +12,8 @@ cff-version: "1.2.0"
 type: software
 
 title: "Data Analytics Fundamentals Project 02: Data Types and Repetition"
-version: "1.0.0"
-date-released: "2026-04-15"
+version: "1.1.0"
+date-released: "2026-05-13"
 
 authors:
   - family-names: Case

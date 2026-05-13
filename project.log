@@ -1,0 +1,147 @@
+2026-05-13 10:51:06 | INFO | P02 | === RUN START ===
+2026-05-13 10:51:06 | INFO | P02 | project=P02
+2026-05-13 10:51:06 | INFO | P02 | repo_dir=datafun-02-automation
+2026-05-13 10:51:06 | INFO | P02 | python=3.14.0
+2026-05-13 10:51:06 | INFO | P02 | os=Windows 11
+2026-05-13 10:51:06 | INFO | P02 | shell=powershell
+2026-05-13 10:51:06 | INFO | P02 | cwd=.
+2026-05-13 10:51:06 | INFO | P02 | github_actions=False
+2026-05-13 10:51:06 | INFO | P02 | ========================
+2026-05-13 10:51:06 | INFO | P02 | START main()
+2026-05-13 10:51:06 | INFO | P02 | ========================
+2026-05-13 10:51:06 | INFO | P02 | ========================
+2026-05-13 10:51:06 | INFO | P02 | FUNCTION 1: for loop over a numeric range
+2026-05-13 10:51:06 | INFO | P02 | ========================
+2026-05-13 10:51:06 | INFO | P02 | First quarter: 1
+2026-05-13 10:51:06 | INFO | P02 | Last quarter:  4
+2026-05-13 10:51:06 | INFO | P02 | Wrote file: case_quarter_1.txt
+2026-05-13 10:51:06 | INFO | P02 | Wrote file: case_quarter_2.txt
+2026-05-13 10:51:06 | INFO | P02 | Wrote file: case_quarter_3.txt
+2026-05-13 10:51:06 | INFO | P02 | Wrote file: case_quarter_4.txt
+2026-05-13 10:51:06 | INFO | P02 | ========================
+2026-05-13 10:51:06 | INFO | P02 | FUNCTION 2: for loop over a list
+2026-05-13 10:51:06 | INFO | P02 | ========================
+2026-05-13 10:51:06 | INFO | P02 | Pet list: ['dog', 'cat', 'fish']
+2026-05-13 10:51:06 | INFO | P02 | Wrote file: case_dog.txt
+2026-05-13 10:51:06 | INFO | P02 | Wrote file: case_cat.txt
+2026-05-13 10:51:06 | INFO | P02 | Wrote file: case_fish.txt
+2026-05-13 10:51:06 | INFO | P02 | ========================
+2026-05-13 10:51:06 | INFO | P02 | FUNCTION 3: list comprehension
+2026-05-13 10:51:06 | INFO | P02 | ========================
+2026-05-13 10:51:06 | INFO | P02 | Original list: ['dog', 'cat', 'fish']
+2026-05-13 10:51:06 | INFO | P02 | Transformed list: ['favorite_dog', 'favorite_cat', 'favorite_fish']
+2026-05-13 10:51:06 | INFO | P02 | Wrote file: case_favorite_dog.txt
+2026-05-13 10:51:06 | INFO | P02 | Wrote file: case_favorite_cat.txt
+2026-05-13 10:51:06 | INFO | P02 | Wrote file: case_favorite_fish.txt
+2026-05-13 10:51:06 | INFO | P02 | ========================
+2026-05-13 10:51:06 | INFO | P02 | FUNCTION 4: while loop with counter
+2026-05-13 10:51:06 | INFO | P02 | ========================
+2026-05-13 10:51:06 | INFO | P02 | Files to create: 3
+2026-05-13 10:51:06 | INFO | P02 | Seconds between files: 1
+2026-05-13 10:51:06 | INFO | P02 | Wrote file: case_01.txt
+2026-05-13 10:51:06 | INFO | P02 | Waiting 1 second(s)...
+2026-05-13 10:51:07 | INFO | P02 | Wrote file: case_02.txt
+2026-05-13 10:51:07 | INFO | P02 | Waiting 1 second(s)...
+2026-05-13 10:51:08 | INFO | P02 | Wrote file: case_03.txt
+2026-05-13 10:51:08 | INFO | P02 | Waiting 1 second(s)...
+2026-05-13 10:51:09 | INFO | P02 | ========================
+2026-05-13 10:51:09 | INFO | P02 | Executed successfully!
+2026-05-13 10:51:09 | INFO | P02 | ========================
+2026-05-13 10:51:45 | INFO | P02 | === RUN START ===
+2026-05-13 10:51:45 | INFO | P02 | project=P02
+2026-05-13 10:51:45 | INFO | P02 | repo_dir=datafun-02-automation
+2026-05-13 10:51:45 | INFO | P02 | python=3.14.0
+2026-05-13 10:51:45 | INFO | P02 | os=Windows 11
+2026-05-13 10:51:45 | INFO | P02 | shell=powershell
+2026-05-13 10:51:45 | INFO | P02 | cwd=.
+2026-05-13 10:51:45 | INFO | P02 | github_actions=False
+2026-05-13 10:51:45 | INFO | P02 | ========================
+2026-05-13 10:51:45 | INFO | P02 | START main()
+2026-05-13 10:51:45 | INFO | P02 | ========================
+2026-05-13 10:51:45 | INFO | P02 | ========================
+2026-05-13 10:51:45 | INFO | P02 | FUNCTION 1: for loop over a numeric range
+2026-05-13 10:51:45 | INFO | P02 | ========================
+2026-05-13 10:51:45 | INFO | P02 | First quarter: 1
+2026-05-13 10:51:45 | INFO | P02 | Last quarter:  4
+2026-05-13 10:51:45 | INFO | P02 | Wrote file: case_quarter_1.txt
+2026-05-13 10:51:45 | INFO | P02 | Wrote file: case_quarter_2.txt
+2026-05-13 10:51:45 | INFO | P02 | Wrote file: case_quarter_3.txt
+2026-05-13 10:51:45 | INFO | P02 | Wrote file: case_quarter_4.txt
+2026-05-13 10:51:45 | INFO | P02 | ========================
+2026-05-13 10:51:45 | INFO | P02 | FUNCTION 2: for loop over a list
+2026-05-13 10:51:45 | INFO | P02 | ========================
+2026-05-13 10:51:45 | INFO | P02 | Pet list: ['dog', 'cat', 'fish']
+2026-05-13 10:51:45 | INFO | P02 | Wrote file: case_dog.txt
+2026-05-13 10:51:45 | INFO | P02 | Wrote file: case_cat.txt
+2026-05-13 10:51:45 | INFO | P02 | Wrote file: case_fish.txt
+2026-05-13 10:51:45 | INFO | P02 | ========================
+2026-05-13 10:51:45 | INFO | P02 | FUNCTION 3: list comprehension
+2026-05-13 10:51:45 | INFO | P02 | ========================
+2026-05-13 10:51:45 | INFO | P02 | Original list: ['dog', 'cat', 'fish']
+2026-05-13 10:51:45 | INFO | P02 | Transformed list: ['favorite_dog', 'favorite_cat', 'favorite_fish']
+2026-05-13 10:51:45 | INFO | P02 | Wrote file: case_favorite_dog.txt
+2026-05-13 10:51:45 | INFO | P02 | Wrote file: case_favorite_cat.txt
+2026-05-13 10:51:45 | INFO | P02 | Wrote file: case_favorite_fish.txt
+2026-05-13 10:51:45 | INFO | P02 | ========================
+2026-05-13 10:51:45 | INFO | P02 | FUNCTION 4: while loop with counter
+2026-05-13 10:51:45 | INFO | P02 | ========================
+2026-05-13 10:51:45 | INFO | P02 | Files to create: 3
+2026-05-13 10:51:45 | INFO | P02 | Seconds between files: 1
+2026-05-13 10:51:45 | INFO | P02 | Wrote file: case_01.txt
+2026-05-13 10:51:45 | INFO | P02 | Waiting 1 second(s)...
+2026-05-13 10:51:46 | INFO | P02 | Wrote file: case_02.txt
+2026-05-13 10:51:46 | INFO | P02 | Waiting 1 second(s)...
+2026-05-13 10:51:47 | INFO | P02 | Wrote file: case_03.txt
+2026-05-13 10:51:47 | INFO | P02 | Waiting 1 second(s)...
+2026-05-13 10:51:48 | INFO | P02 | ========================
+2026-05-13 10:51:48 | INFO | P02 | Executed successfully!
+2026-05-13 10:51:48 | INFO | P02 | ========================
+2026-05-13 10:52:01 | INFO | P02 | === RUN START ===
+2026-05-13 10:52:01 | INFO | P02 | project=P02
+2026-05-13 10:52:01 | INFO | P02 | repo_dir=datafun-02-automation
+2026-05-13 10:52:01 | INFO | P02 | python=3.14.0
+2026-05-13 10:52:01 | INFO | P02 | os=Windows 11
+2026-05-13 10:52:01 | INFO | P02 | shell=powershell
+2026-05-13 10:52:01 | INFO | P02 | cwd=.
+2026-05-13 10:52:01 | INFO | P02 | github_actions=False
+2026-05-13 10:52:01 | INFO | P02 | ========================
+2026-05-13 10:52:01 | INFO | P02 | START main()
+2026-05-13 10:52:01 | INFO | P02 | ========================
+2026-05-13 10:52:01 | INFO | P02 | ========================
+2026-05-13 10:52:01 | INFO | P02 | FUNCTION 1: for loop over a numeric range
+2026-05-13 10:52:01 | INFO | P02 | ========================
+2026-05-13 10:52:01 | INFO | P02 | First quarter: 1
+2026-05-13 10:52:01 | INFO | P02 | Last quarter:  4
+2026-05-13 10:52:01 | INFO | P02 | Wrote file: case_quarter_1.txt
+2026-05-13 10:52:01 | INFO | P02 | Wrote file: case_quarter_2.txt
+2026-05-13 10:52:01 | INFO | P02 | Wrote file: case_quarter_3.txt
+2026-05-13 10:52:01 | INFO | P02 | Wrote file: case_quarter_4.txt
+2026-05-13 10:52:01 | INFO | P02 | ========================
+2026-05-13 10:52:01 | INFO | P02 | FUNCTION 2: for loop over a list
+2026-05-13 10:52:01 | INFO | P02 | ========================
+2026-05-13 10:52:01 | INFO | P02 | Pet list: ['dog', 'cat', 'fish']
+2026-05-13 10:52:01 | INFO | P02 | Wrote file: case_dog.txt
+2026-05-13 10:52:01 | INFO | P02 | Wrote file: case_cat.txt
+2026-05-13 10:52:01 | INFO | P02 | Wrote file: case_fish.txt
+2026-05-13 10:52:01 | INFO | P02 | ========================
+2026-05-13 10:52:01 | INFO | P02 | FUNCTION 3: list comprehension
+2026-05-13 10:52:01 | INFO | P02 | ========================
+2026-05-13 10:52:01 | INFO | P02 | Original list: ['dog', 'cat', 'fish']
+2026-05-13 10:52:01 | INFO | P02 | Transformed list: ['favorite_dog', 'favorite_cat', 'favorite_fish']
+2026-05-13 10:52:01 | INFO | P02 | Wrote file: case_favorite_dog.txt
+2026-05-13 10:52:01 | INFO | P02 | Wrote file: case_favorite_cat.txt
+2026-05-13 10:52:01 | INFO | P02 | Wrote file: case_favorite_fish.txt
+2026-05-13 10:52:01 | INFO | P02 | ========================
+2026-05-13 10:52:01 | INFO | P02 | FUNCTION 4: while loop with counter
+2026-05-13 10:52:01 | INFO | P02 | ========================
+2026-05-13 10:52:01 | INFO | P02 | Files to create: 3
+2026-05-13 10:52:01 | INFO | P02 | Seconds between files: 1
+2026-05-13 10:52:01 | INFO | P02 | Wrote file: case_01.txt
+2026-05-13 10:52:01 | INFO | P02 | Waiting 1 second(s)...
+2026-05-13 10:52:02 | INFO | P02 | Wrote file: case_02.txt
+2026-05-13 10:52:02 | INFO | P02 | Waiting 1 second(s)...
+2026-05-13 10:52:03 | INFO | P02 | Wrote file: case_03.txt
+2026-05-13 10:52:03 | INFO | P02 | Waiting 1 second(s)...
+2026-05-13 10:52:04 | INFO | P02 | ========================
+2026-05-13 10:52:04 | INFO | P02 | Executed successfully!
+2026-05-13 10:52:04 | INFO | P02 | ========================
