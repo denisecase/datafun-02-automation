@@ -131,7 +131,7 @@ Example:
 
 ```python
 if score >= 6.0:
-   print("High score")
+    print("High score")
 ```
 
 The condition inside if must evaluate to True or False.

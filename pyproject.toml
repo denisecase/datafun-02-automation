@@ -14,60 +14,35 @@
 name = "datafun-02-automation" # CUSTOM: Package distribution name (use lowercase and dashes).
 readme = "README.md"
 requires-python = ">=3.14"
-version = "1.1.0"
+version = "1.2.0"
 
 dependencies = [
     # REQ.DEPS: External packages used by the project code.
-    "datafun-toolkit",
+    "datafun-toolkit", # WHY: Privacy-preserving logging
+    "pandas", # WHY: Data manipulation and analysis library
 ]
 
-[project.optional-dependencies]
-# WHY: Optional dependency groups keep the core install clean and focused.
+[dependency-groups]
+# WHY: Development dependencies support maintaining and validating the project
+# but are not runtime dependencies or optional features of the published package.
+
 dev = [
     # REQ.DEV.DEPS: External packages used for linting, testing, type checking, etc.
-    "pre-commit",
-    "pyright",
-    "pytest",
-    "pytest-cov",
-    "ruff",
+    "pre-commit", # WHY: Pre-commit hooks for consistent formatting and linting.
+    "pytest",     # WHY: Test framework for unit and integration tests.
+    "pytest-cov", # WHY: Test coverage reporting for quality metrics and CI gating.
+    "ruff",       # WHY: Fast linting and formatting for Python code.
+    "ty",         # WHY: Type checking for static analysis and type safety.
 ]
 
 docs = [
     # REQ.DOCS.DEPS: External packages used to generate project documentation.
+    "zensical",
     "mkdocstrings[python]", # WHY: Auto-generate API docs from docstrings.
-    "zensical", # WHY: Generate and maintain project documentation.
 ]
-
 # ============================================================
 # SECTION 2: TOOL CONFIGURATION (Professional basics)
 # ============================================================
-
-# === PYRIGHT (TYPE CHECKING HELPS FIND COMMON ERRORS BEFORE THE CODE RUNS) ===
-
-[tool.pyright]
-# CUSTOM: Pyright configuration for static type checking.
-# WHY: Strict type checking helps catch bugs early.
-include = ["src"] # WHY: Include both source and test code for comprehensive type checking.
-extraPaths = ["src"] # WHY: Ensure imports are resolved relative to src/ for consistent behavior across environments.
-exclude = ["**/node_modules", "**/.*", ".venv", "**/__pycache__", "dist", "build"]
-pythonVersion = "3.13" # 3.14 stubs incomplete in current pyright
-reportMissingTypeStubs = "none" # WHY: Avoid warnings from third-party libraries without type stubs.
-reportMissingImports = "warning" # WHY: Warn about missing imports to catch potential issues, but allow flexibility in notebooks and dynamic code.
-reportPrivateUsage = "none" # WHY: Allow usage of private members (e.g., _version.py) without warnings, common in Python projects.
-reportUntypedClassDecorator = "none"  # @dataclass stubs incomplete in current pyright
-reportArgumentType = "none"           # len() resolves to collections.abc, pyright bug
-reportUnknownMemberType = "none"      # WHY: confluent_kafka + duckdb stub gaps
-reportUnknownVariableType = "none"    # WHY: confluent_kafka + duckdb stub gaps
-reportCallIssue = "none"              # WHY: @dataclass frozen in KafkaSettings
-typeCheckingMode = "basic" # strict | basic | off
-
-[[tool.pyright.executionEnvironments]]
-root = "tests"
-reportUnknownMemberType = "none"
-reportUnknownVariableType = "none"
-reportUnknownParameterType = "none"
-reportMissingParameterType = "none"
-reportUnknownArgumentType = "none"
 
 # === PYTEST (VERIFY LOGIC) ===
 
@@ -144,7 +119,15 @@ force-sort-within-sections = true
 
 [tool.ruff.lint.pydocstyle]
 # REQ: Google style is the project-wide docstring convention.
-convention = "google"   # ALT: "numpy" — choose one, never mix.
+convention = "google"
+
+# === UV ===
+
+[tool.uv]
+# WHY: Install all dependency groups defined by this repository by default.
+# This keeps the canonical setup command identical across project types while
+# allowing each repository to declare only the tooling it actually needs.
+default-groups = "all"   # ALT: "numpy" — choose one, never mix.
 
 # ============================================================
 # SECTION 3: BUILD SYSTEM (boilerplate; CUSTOM src/ agreement)

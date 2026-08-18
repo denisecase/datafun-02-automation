@@ -10,7 +10,7 @@ to complete:
 2. Phase 2. **Change Authorship** - update the project to your name and GitHub account
 3. Phase 3. **Read & Understand** - review the project structure and code
 
-Open `notebooks/eda_case.ipynb` in VS Code, select the kernel (`.venv`), and run all cells.
+Open `notebooks/eda.ipynb` in VS Code, select the kernel (`.venv`), and run all cells.
 Confirm the notebook executes without errors and commit it with output visible.
 
 ## FRIDAY/SUNDAY: Complete Workflow Phases 4-5

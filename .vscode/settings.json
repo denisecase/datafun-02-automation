@@ -1,30 +1,21 @@
 // ============================================================
-// .vscode/settings.json
+// .vscode/settings.json (ALL-PY-REPOS)
 // ============================================================
-// Updated 2026-06-24
+// Updated: 2026-08-15
+// Basis: cross-platform (all 3 OS), popular, reliable, and/or safe.
 // NOTE: Comments are not allowed in standard JSON files,
-// but Microsoft allows them in their .vscode config files.
+//       but Microsoft allows them in their .vscode config files (JSONC).
+// Rule: a formatter is named for every common filetype (a few equal
+//       VS Code defaults) so the mapping is visible. Every formatter
+//       listed should have its extension recommended in extensions.json,
+//       or formatting silently does nothing on a clone.
+// Order: top-level editor settings, then [language] blocks A-Z, then
+//        other namespaced settings.
 {
   "editor.formatOnSave": false,
-  // WHY: Tell VS Code to use this repo's isolated uv environment.
-  // CROSS-PLATFORM: Point to the .venv folder, not an OS-specific executable.
-  // GOOD: "${workspaceFolder}/.venv"
-  // BAD on Windows: "${workspaceFolder}/.venv/bin/python"
-  // BAD on macOS/Linux: "${workspaceFolder}/.venv/Scripts/python.exe"
-  // OBS: uv creates .venv when students run uv sync.
-  // OBS: This helps prevent VS Code from guessing Homebrew Python,
-  // Apple Python, Windows Store Python, system Python, or another local interpreter.
-  "python.defaultInterpreterPath": "${workspaceFolder}/.venv",
-  // WHY: When VS Code opens a new terminal, activate the selected environment.
-  // BENEFIT: uv commands still own package management, but terminal commands
-  // like python --version are less likely to hit the wrong system Python.
-  "python.terminal.activateEnvironment": true,
-  // Resolve paths from project root rather than kernel start location.
-  // BENEFIT: Notebook file reads/writes behave consistently from the repo root
-  // on macOS, Windows, and Linux.
-  "jupyter.notebookFileRoot": "${workspaceFolder}",
-  "[python]": {
-    "editor.defaultFormatter": "charliermarsh.ruff"
+
+  "[github-actions-workflow]": {
+    "editor.defaultFormatter": "redhat.vscode-yaml"
   },
   "[json]": {
     "editor.defaultFormatter": "vscode.json-language-features"
@@ -32,22 +23,20 @@
   "[jsonc]": {
     "editor.defaultFormatter": "vscode.json-language-features"
   },
-  "[jupyter]": {
-    "editor.defaultFormatter": "ms-toolsai.jupyter"
-  },
   "[markdown]": {
     // 2026-04 changed to prettier for markdown files (e.g., README.md)
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "[yaml]": {
-    "editor.defaultFormatter": "redhat.vscode-yaml"
+  "[python]": {
+    "editor.defaultFormatter": "charliermarsh.ruff"
   },
   "[toml]": {
     "editor.defaultFormatter": "tamasfe.even-better-toml"
   },
-  "[github-actions-workflow]": {
+  "[yaml]": {
     "editor.defaultFormatter": "redhat.vscode-yaml"
   },
+
   "yaml.schemas": {
     "https://json.schemastore.org/github-workflow.json": [
       ".github/workflows/*.yml",

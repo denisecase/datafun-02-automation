@@ -97,35 +97,48 @@ code .
 
 ### In a VS Code terminal
 
-```shell
-# reset uv cache only after suspected cache corruption or strange dependency errors
-# uv cache clean
+These are listed for convenience.
+For best results, follow the detailed instructions in
+[pro-analytics-02 guide](https://denisecase.github.io/pro-analytics-02/).
 
+Use VS Code menu option `Terminal` / `New Terminal` to open a **VS Code terminal**
+in the root project folder.
+Copy each command, paste into your terminal, and hit ENTER,
+to run each command one at a time.
+
+```shell
 uv self update
 uv python pin 3.14
-uv sync --extra dev --extra docs --upgrade
+uv python install
+uv lock --upgrade
+uv sync
 
-uvx pre-commit install
+uv run pre-commit install
+uv run pre-commit autoupdate
 
 git add -A
-uvx pre-commit run --all-files
-# repeat if changes were made
+uv run pre-commit run --all-files
+# repeat if changes were made by pre-commit tasks
 git add -A
-uvx pre-commit run --all-files
+uv run pre-commit run --all-files
 
 # run the module
-uv run python -m datafun.app_case
+uv run python -m datafun.app
 
 # do chores
 uv run ruff format .
 uv run ruff check . --fix
-uv run python -m pyright
+uv run ty check
 uv run python -m pytest
 uv run python -m zensical build
 
-# save progress
+# save progress as you work
 git add -A
-git commit -m "update"
+git commit -m "your message here"
+# repeat if changes were made (try the UP ARROW)
+git add -A
+git commit -m "your message here"
+
 git push -u origin main
 ```
 

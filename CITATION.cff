@@ -9,11 +9,12 @@
 # USAGE: See https://citation-file-format.github.io/ for details.
 
 cff-version: "1.2.0"
+message: "If using this work, please cite it as described in this file."
 type: software
 
-title: "Data Analytics Fundamentals Project 02: Data Types and Repetition"
-version: "1.1.0"
-date-released: "2026-05-13"
+title: "datafun-02-automation"
+version: "1.2.0"
+date-released: "2026-08-17"
 
 authors:
   - family-names: Case
@@ -32,43 +33,26 @@ abstract: >
   and reinforcement of professional project structure and workflows.
 
 keywords:
-  # identity
-  - data analytics
-  - python
-  - data-types
-  - control-flow
-  - loops
-  - repetition
-  - automation
-  - introductory-programming
+  - data-analytics
+  - analytics-foundations
+  - data-exploration
+  - data-inspection
+  - pandas
   - logging
-
-  # audience
-  - education
-  - teaching
-  - learning
-  - students
-  - instructors
-  - computer-science-education
-  - data-analytics-education
-
-  # practices
   - professional-python
   - src-layout
-  - ci-cd
-  - github-actions
   - reproducible-workflows
   - software-quality
-  - professional-practice
-
-  # tools and ecosystem
+  - ci-cd
+  - github-actions
   - python
   - git
   - github
-  - pre-commit
   - open-source
   - uv
   - ruff
-  - mkdocs
-
-message: "If using this work, please cite it as described in this file."
+  - pre-commit
+  - ty
+  - hatchling
+  - zensical
+  - data-analytics-education

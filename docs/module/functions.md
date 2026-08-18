@@ -206,7 +206,7 @@ This enables reuse.
 ### Forgetting parentheses when calling
 
 ```python
-process_data    # WRONG
+process_data  # WRONG
 process_data()  # RIGHT
 ```
 
