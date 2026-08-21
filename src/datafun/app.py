@@ -1,11 +1,22 @@
 """src/datafun/app.py - Project script.
 
 Author: Denise Case
-Date: 2026-08
+Date: 2026-08-20
 
-DOMAIN: Penguins
+HOW TO RUN THIS FILE:
 
-Operate on a dataset of penguins with Python.
+From the VS Code menu (with only this project open in VS Code),
+click "Terminal" / New Terminal to
+open an integrated Terminal in the root project folder.
+Paste the following command and press ENTER or RETURN
+to run this file as a script:
+
+uv run python -m datafun.app
+
+DOMAIN:
+
+A dataset of penguins.
+See docs/data-card.md for more information about the dataset.
 
 EXPLORE:
 
@@ -15,35 +26,12 @@ Use Python to repeat and make decisions:
 - transform values with a list comprehension
 - repeat work while a condition is true
 
-DESIGN:
+ORGANIZATION:
 
-Use this file to document your analysis
-and orchestrate the work.
-The functions that do the work live in process_utils.py.
-We import those functions and pass them the
-information they need.
-
-RUN:
-
-Open an integrated Terminal in the root project folder
-and paste the following command to run this file as a script.
-After pasting, press Enter to execute the command.
-
-uv run python -m datafun.app
-
-SKILLS:
-
-This project illustrates several core Python skills:
-
-- functions (encapsulate reusable instructions)
-- calling functions in another file (import them, then pass what they need)
-- for loops (repeat work for each item)
-- branching with if / elif / else (choose what happens)
-- list comprehensions (transform a collection of values)
-- while loops (repeat while a condition is true)
-- main function (where the instructions begin)
-- conditional execution guard (where to start when this module is run as a script)
-
+This file is the main script for the project.
+Execution begins at the start of the main() function.
+We organize the instructions into different files
+(a Python file is called a module).
 """
 
 
@@ -55,9 +43,11 @@ import time
 from typing import Final
 
 from datafun_toolkit.logger import get_logger, log_header, log_path
+from eda_vizkit import save_chart, show_numeric_distribution
+import matplotlib.pyplot as plt
 import pandas as pd
 
-from datafun.data_utils import inspect, load_data
+from datafun.utils_data import inspect
 
 # === CONFIGURE LOGGER ONCE FOR THE APPLICATION ===
 
@@ -82,63 +72,62 @@ LOG: logging.Logger = get_logger("P02", level="DEBUG")
 
 # === LOCATE THE DATA FILE ===
 
-# Use the Path() constructor to create a Path object
-# representing the "data" folder.
-DATA_FOLDER_PATH: Final[Path] = Path("data")
+# Use the Path() constructor to create a Path object representing the "data" folder.
+# Combine with the CSV file name
+# to get the full path to the data file.
+DATA_FILE_PATH: Final[Path] = Path("data") / "penguins.csv"
 
-# Combine the data folder path
-# with the CSV file name to get the
-# full path to the data file.
-DATA_FILE_PATH: Final[Path] = DATA_FOLDER_PATH / "penguins.csv"
+# === OPEN THE DATA FILE IN EXCEL ===
+
+# Look in the data/ folder. Open the file in Excel.
+# Understand what is there and record your observations.
 
 # === DETERMINE WHAT A ROW REPRESENTS ===
 
-# This is the GRAIN of the dataset - the single most
+# CUSTOM: This is the GRAIN of the dataset - the single most
 # important thing to know about any dataset.
 # Come up with a short phrase that describes it.
 # Fill this string value AFTER exploring the data.
-GRAIN: Final[str] = "one penguin"
+GRAIN: Final[str] = "one penguin"  # CUSTOM
 
 
-# WHAT categorical groups we want to process with a for loop.
+# CUSTOM: Choose a categorical group that we could process with a for loop.
 GROUP_COLUMN: Final[str] = "species"
-GROUP_VALUES: Final[list[str]] = [
-    "Adelie",
-    "Chinstrap",
-    "Gentoo",
-]
+# CUSTOM: Describe why we choose it.
+# Use a triple-quoted string (three double quotes) to allow multi-line text.
+# Use a raw string (r before the opening quotes) so it appears just
+# like I typed it.
+WHY_THIS_GROUP: Final[str] = r"""
+The species column has a small number of unique values.
+There are three unique species, so a for loop can
+process and log each one.
+"""
 
-# WHAT measurement we want to explore.
-MEASUREMENT_COLUMN: Final[str] = "body_mass_g"
+# CUSTOM: WHICH measurement to classify, and why this one.
+MEASUREMENT_COLUMN: Final[str] = "bill_length_mm"
 
-# VALUES used to branch and describe a body mass.
-LOW_MASS_G: Final[float] = 3500.0
-HIGH_MASS_G: Final[float] = 4500.0
-EXAMPLE_MASS_G: Final[float] = 4000.0
+# CUSTOM: Describe why we choose it.
+# Use a triple-quoted string (three double quotes) to allow multi-line text.
+# Use a raw string (r before the opening quotes) so it appears just
+# like I typed it.
+WHY_THIS_MEASUREMENT: Final[str] = r"""
+Bill length varies across penguins.
+There is no fixed cutoff, so we'll calculate the average
+and assign a classification depending on a threshold
+around the average value.
+"""
 
+# CUSTOM: Set thresholds around the mean to
+# classify a reading.
+SHORT_THRESHOLD_MULTIPLIER: Final[float] = 0.9
+LONG_THRESHOLD_MULTIPLIER: Final[float] = 1.1
 
-# === DEFINE THE MAIN FUNCTION THAT CALLS OTHER FUNCTIONS ===
+# === DEFINE THE MAIN FUNCTION ===
 
 
 def main() -> None:
     """Entry point when running this file as a Python script.
     This is where the instructions begin.
-    We call other functions to do the work
-    and let this main() function show the process.
-    Each function receives the information
-    it needs because we "pass it in"
-    through the parentheses that follow the function name.
-
-    Functions are blocks of code that are
-    easy to test and easy to reuse.
-
-    The main function often takes no arguments
-    see the empty parentheses in the function definition
-    and returns no value (indicated by the -> None) in the
-    function definition above.
-
-    We document the arguments and return value of every function
-    in these triple quoted strings.
 
     Arguments: None.
     Returns: None.
@@ -149,36 +138,34 @@ def main() -> None:
     LOG.info("START main()")
     LOG.info("===================================")
 
-    log_path(LOG, label="Data folder", path=DATA_FOLDER_PATH)
-    log_path(LOG, label="Data file", path=DATA_FILE_PATH)
-
     LOG.info("-------------------------------")
     LOG.info("01. LOAD the data.")
     LOG.info("-------------------------------")
 
-    # Call the load_data function to read the CSV file into a DataFrame.
-    # Pass in
-    # 1. the relative path to the data file.
-    # 2. the logger so the function can write to the same stream.
-    # Store the resulting DataFrame in the variable named `df`.
+    # Use the imported privacy-preserving log_path() function
+    # To indicate where we will look for the data file.
+    log_path(LOG, "data file", path=DATA_FILE_PATH)
 
-    df: pd.DataFrame = load_data(
-        data_file=DATA_FILE_PATH,
-        log=LOG,
-    )
+    # Call the built-in pandas `read_csv` function.
+    # Store the tabular pandas DataFrame returned
+    # in a local variable named `df`.
+
+    df: pd.DataFrame = pd.read_csv(DATA_FILE_PATH)
+
+    LOG.info("Data loaded successfully.")
 
     LOG.info("-------------------------------")
     LOG.info("02. INSPECT the data.")
     LOG.info("-------------------------------")
 
-    # Call the inspect function to get a string
+    # Call the inspect() function to get a string
     # with basic information about the DataFrame.
+    # Pass in the pandas DataFrame (df)
+    # The grain (what one row represents)
+    # And the log so it knows where to send messages.
 
-    inspection_string: str = inspect(
-        df=df,
-        grain=GRAIN,
-        log=LOG,
-    )
+    inspection_string: str = inspect(df=df, grain=GRAIN, log=LOG)
+
     LOG.info(inspection_string)
 
     LOG.info("-------------------------------")
@@ -186,8 +173,8 @@ def main() -> None:
     LOG.info("-------------------------------")
 
     # Get a list of all column names in the DataFrame.
-    # Use the DataFrame's columns attribute and convert it to a list
-    # Using the `columns` attribute built in tolist() method.
+    # Use the DataFrame's `columns` attribute and convert it to a list
+    # with the built-in tolist() method.
     column_names: list[str] = df.columns.tolist()
 
     # For each name in the column names list, log its name.
@@ -196,17 +183,23 @@ def main() -> None:
     for name in column_names:
         LOG.info(f"Column name: {name}")
 
-    # Get a list of all unique species in the DataFrame.
+    # Up above, we choose a column to group by and log the reason for choosing it.
+    LOG.info(f"Selected group column: {GROUP_COLUMN}")
+    LOG.info(f"Reason for choosing this group: {WHY_THIS_GROUP}")
+
+    # Now, let us use Python to get the unique values in the selected group column.
     # Use the df[column name] to get a one-dimensional array of values
     # by passing in the exact column name as a string (in quotes).
-    # Then call the unique() method to get unique values.
-    # Then call the tolist() method to convert
-    # the array of unique values into a Python list.
-    unique_species_list: list[str] = df["species"].unique().tolist()
+    # NOTE: The entry above must exactly match
+    # the column name in the CSV file, including case and spaces.
+    # Once we have that, we can apply the .unique() method to get the unique values.
+    # Once we have that, we can apply the .tolist() method to convert
+    # the array of unique values into a Python list of strings.
+    unique_list: list[str] = df[GROUP_COLUMN].unique().tolist()
 
-    # For each unique species in the list, log its name.
-    for species in unique_species_list:
-        LOG.info(f"Species: {species}")
+    # For each unique item in the list, log the value.
+    for item in unique_list:
+        LOG.info(f"Item: {item}")
 
     LOG.info("-------------------------------")
     LOG.info("04. TRANSFORM one list to another list.")
@@ -227,23 +220,23 @@ def main() -> None:
     capitalized_column_names: list[str] = [name.upper() for name in column_names]
     LOG.info(f"Capitalized column names: {capitalized_column_names}")
 
-    # common string transformations include:
-    # - converting strings to lowercase. e.g., name.lower()
-    # - stripping whitespace, e.g., name.strip()
-
     LOG.info("-------------------------------")
     LOG.info("05. BRANCH based on conditions.")
     LOG.info("-------------------------------")
 
-    bill_length_mm_minimum: float = df["bill_length_mm"].min()
-    bill_length_mm_maximum: float = df["bill_length_mm"].max()
-    bill_length_mm_average: float = df["bill_length_mm"].mean()
-    LOG.info(f"Bill length (mm) - Minimum: {bill_length_mm_minimum}")
-    LOG.info(f"Bill length (mm) - Maximum: {bill_length_mm_maximum}")
-    LOG.info(f"Bill length (mm) - Average: {bill_length_mm_average}")
+    # Log the selected measurement column and the reason for choosing it.
+    LOG.info(f"Selected measurement column: {MEASUREMENT_COLUMN}")
+    LOG.info(f"Reason for choosing this measurement: {WHY_THIS_MEASUREMENT}")
+
+    minimum: float = df[MEASUREMENT_COLUMN].min()
+    maximum: float = df[MEASUREMENT_COLUMN].max()
+    mean: float = df[MEASUREMENT_COLUMN].mean()
+    LOG.info(f"{MEASUREMENT_COLUMN} - Minimum: {minimum}")
+    LOG.info(f"{MEASUREMENT_COLUMN} - Maximum:  {maximum}")
+    LOG.info(f"{MEASUREMENT_COLUMN} - Mean:     {mean}")
     LOG.info("-------------------------------")
 
-    # Get the bill length for the first row in the DataFrame.
+    # Get the selected measurement for the first row in the DataFrame.
     # Provide the exact column name as a string to access its values
     # as an array-like object, from which we can select specific rows using iloc.
     # iloc stands for "index location" and is used to select rows by their integer index.
@@ -254,26 +247,30 @@ def main() -> None:
     # and it can be accessed using iloc[0]
     # The second item is one away from the start,
     # so it can be accessed using iloc[1].
-    bill_length_mm_first: float = df["bill_length_mm"].iloc[0]
-    LOG.info(f"First row bill length (mm): {bill_length_mm_first}")
+    sample_index: int = 0
+    sample_reading: float = df[MEASUREMENT_COLUMN].iloc[sample_index]
+    LOG.info(f"Sample {MEASUREMENT_COLUMN}: {sample_reading}")
 
-    # Calculate some thresholds for classifying bill lengths.
-    SHORT_THRESHOLD: Final[float] = bill_length_mm_average * 0.9
-    LONG_THRESHOLD: Final[float] = bill_length_mm_average * 1.1
-    LOG.info(f"Short threshold: {SHORT_THRESHOLD}")
-    LOG.info(f"Long threshold:  {LONG_THRESHOLD}")
+    LOG.info(f"Short threshold multiplier: {SHORT_THRESHOLD_MULTIPLIER}")
+    LOG.info(f"Long threshold multiplier:  {LONG_THRESHOLD_MULTIPLIER}")
+
+    short_threshold: float = SHORT_THRESHOLD_MULTIPLIER * mean
+    long_threshold: float = LONG_THRESHOLD_MULTIPLIER * mean
+
+    LOG.info(f"Short threshold: {short_threshold}")
+    LOG.info(f"Long threshold:  {long_threshold}")
 
     # Use the Python keywords if, elif, and else
-    # to classify the bill length based on the calculated thresholds.
+    # to classify the selected measurement based on the calculated thresholds.
     # elif means "else if"
-    if bill_length_mm_first < SHORT_THRESHOLD:
+    if sample_reading < short_threshold:
         classification_string: str = "SHORT"
-    elif bill_length_mm_first > LONG_THRESHOLD:
+    elif sample_reading > long_threshold:
         classification_string: str = "LONG"
     else:
         classification_string: str = "MEDIUM"
 
-    LOG.info(f"First row bill length classification: {classification_string}")
+    LOG.info(f"First row {MEASUREMENT_COLUMN} classification: {classification_string}")
 
     LOG.info("-------------------------------")
     LOG.info("06. REPEAT while a condition is true.")
@@ -286,28 +283,57 @@ def main() -> None:
     # every so many seconds, for a total of MAX_RECORDS measurements.
 
     # Constant values used by the while loop.
-    MAX_RECORDS: Final[int] = 10
-    STREAM_WAIT_SECONDS: Final[int] = 1
+    MAX_RECORDS: Final[int] = 10  # CUSTOM: change this from 10.
+    STREAM_WAIT_SECONDS: Final[int] = 1  # CUSTOM: Change this from 1 second.
 
     LOG.info("Starting to process measurements periodically...")
     LOG.info(f"Max records to process: {MAX_RECORDS}")
     LOG.info(f"Stream wait seconds: {STREAM_WAIT_SECONDS}")
 
     # Initialize the count variable used by the while loop.
+    # By convention, counting starts at 0, so the first pass reads row 0.
     count: int = 0
     LOG.info(f"Current count: {count}")
 
     # Start the while loop to process measurements periodically
     # while the count is less than the maximum number of records.
     while count < MAX_RECORDS:
-        # Get the current measurement from the first row of the DataFrame.
-        current_measurement: float = df["bill_length_mm"].iloc[count]
-        LOG.info(f"Current bill length (mm): {current_measurement}")
+        # Get the measurement from row `count`, which advances each pass.
+        current_measurement: float = df[MEASUREMENT_COLUMN].iloc[count]
+        LOG.info(f"Current {MEASUREMENT_COLUMN}: {current_measurement}")
 
         count += 1
         LOG.info(f"Updated count: {count}")
 
         time.sleep(STREAM_WAIT_SECONDS)
+
+    LOG.info("-------------------------------")
+    LOG.info("07. VISUALIZE the selected measurement.")
+    LOG.info("-------------------------------")
+
+    LOG.info("Creating a chart to visualize the selected measurement.")
+    LOG.info("We selected one numeric column, so let's look at the distribution.")
+
+    # Define a path to save the distribution plot.
+    # REQUIRED: Use the "docs/images" folder to store generated charts.
+    CHART_PATH = Path("docs/images/measurement-distribution.png")
+
+    # Call an imported function that will show a distribution plot
+    # Pass in the pandas DataFrame (df) along with the selected measurement column.
+    # It will return a matplotlib Axes object representing the distribution plot.
+    ax = show_numeric_distribution(
+        df,
+        column=MEASUREMENT_COLUMN,
+    )
+
+    # call the save_chart() function and pass in the Axes and the path
+    save_chart(ax, CHART_PATH)
+    LOG.info(f"Chart saved successfully at {CHART_PATH}.")
+
+    LOG.info(
+        "IMPORTANT: Close chart window to continue by clicking its X or close button."
+    )
+    plt.show()
 
     LOG.info("===================================")
     LOG.info("END main() - Executed successfully!")
@@ -316,9 +342,10 @@ def main() -> None:
 
 # === CONDITIONAL EXECUTION GUARD ===
 
-# WHY: If running this file as a script, then call main() function.
-# This is standard Python "boilerplate" - we copy and paste it
-# into every Python script. It is a "conditional execution" guard.
+# WHY: This is standard Python "boilerplate" - we copy and paste it
+# into every Python script. It is a "conditional execution" guard,
+# meaning: if this file is being run as a script, then execute the code
+# in the main() function.
 
 if __name__ == "__main__":
     main()

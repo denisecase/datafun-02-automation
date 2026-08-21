@@ -1,6 +1,6 @@
 """src/datafun/data_utils.py - Utility functions for the project.
 
-These functions do the reusable WORK:
+These functions do the reusable work:
 
 - load a file,
 - look at the data,
@@ -25,35 +25,8 @@ RUN:
 # === DECLARE IMPORTS (BRING IN FREE CODE) ===
 
 import logging
-from pathlib import Path
 
 import pandas as pd
-
-# === DECLARE A FUNCTION TO LOAD THE DATA ===
-
-
-def load_data(data_file: Path, log: logging.Logger) -> pd.DataFrame:
-    """Load the CSV file into a DataFrame (a table Python can look at).
-
-    We log the path and whether it exists BEFORE we load, so that if the
-    file is not found, the answer is already in the log above the error.
-
-    Arguments:
-        data_file: where the CSV lives (passed in, not assumed).
-        log: the logger to write progress to (passed in, not assumed).
-
-    Returns:
-        the loaded data as a pandas DataFrame.
-    """
-    log.info("START load_data")
-    log.info("   data_file:   %s", data_file)
-    log.info("   File exists: %s", data_file.exists())
-
-    df: pd.DataFrame = pd.read_csv(data_file)
-
-    log.info("END load_data. Returning pandas DataFrame.")
-    return df
-
 
 # === DECLARE A FUNCTION TO INSPECT THE DATA ===
 

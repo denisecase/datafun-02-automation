@@ -1,7 +1,7 @@
 # ============================================================
 # pyproject.toml (Python project configuration)
 # ============================================================
-# Updated: 2026-05-13
+# Updated: 2026-08-20
 # REQ.PYTHON: Python projects MUST include pyproject.toml as the single source of truth.
 # WHY: Centralizes project configuration.
 # CUSTOM: Update identity and build tool src folders.
@@ -18,8 +18,10 @@ version = "1.2.0"
 
 dependencies = [
     # REQ.DEPS: External packages used by the project code.
-    "datafun-toolkit", # WHY: Privacy-preserving logging
-    "pandas", # WHY: Data manipulation and analysis library
+    "datafun-toolkit", # WHY: Custom utility library for privacy-aware logging
+    "eda-vizkit", # WHY: Visualization library for exploratory data analysis
+    "matplotlib", # WHY: Plotting library for data visualization
+    "pandas", # WHY: DataFrame library for data manipulation and analysis.
 ]
 
 [dependency-groups]
@@ -47,34 +49,23 @@ docs = [
 # === PYTEST (VERIFY LOGIC) ===
 
 [tool.pytest.ini_options]
-# WHY: Ensure tests are discoverable and coverage is visible.
-minversion = "7.0"
+# WHY: Consistent test discovery and coverage visibility.
+minversion = "9.0"
 testpaths = ["tests"]
-addopts = " --cov=src --cov-report=term-missing"
+addopts = "--cov=src --cov-report=term-missing"
+filterwarnings = [
+    "ignore:FigureCanvasAgg is non-interactive, and thus cannot be shown:UserWarning",
+]
 
 # === RUFF (PYTHON FORMATTING AND LINTING) ===
 
 [tool.ruff]
-# WHY: Ruff provides fast linting and formatting with deterministic output.
-exclude = [
-    ".eggs",
-    "*.egg-info",
-    ".ruff_cache",
-    ".venv",
-    "__pycache__",
-    "build",
-    "dist",
-    "site",
-]
-line-length = 88 # WHY: PEP 8 standard line length, wrap when possible.
-preview = false # WHY: Stable features only; avoid preview features.
-target-version = "py313" # WHY: Match latest supported Python version.
+line-length = 88 # WHY: PEP 8 standard, wrap when possible.
+target-version = "py314" # WHY: Match latest supported Python version.
 unsafe-fixes = false # WHY: Avoid potentially unsafe automatic fixes.
 
 [tool.ruff.format]
 # WHY: Formatter choices should be stable to keep diffs small and predictable.
-indent-style = "space" # See also .gitattributes for indent style.
-line-ending = "auto" # Match existing files and let .gitattributes handle it.
 quote-style = "preserve" # Preserve existing quote styles to minimize churn.
 
 [tool.ruff.lint]
@@ -83,13 +74,13 @@ select = [
     "E",   # Basic syntax and structural correctness
     "F",   # Undefined names and unused imports
     "W",   # Warnings that catch easy issues early
-    "I",   # Deterministic import ordering
+    "I",   # Import ordering
     "UP",  # Modern Python constructs
-    "B",   # Common bug patterns
+    "B",   # Common bug-prone patterns
     "PTH", # Prefer pathlib patterns
 ]
 ignore = [
-  "E501", # Final line length handled by formatter
+  "E501", # Line length enforced by formatter, not linter.
 ]
 
 [tool.ruff.lint.isort]
@@ -99,21 +90,12 @@ force-sort-within-sections = true
 # === PER-FILE IGNORES (DEPENDS ON DOCSTRING POLICY) ===
 
 [tool.ruff.lint.per-file-ignores]
-# WHY: Some files MUST NOT undergo linting or automated fixes.
-
-# POLICY: Docstring rules are NOT enabled (no "D" in [tool.ruff.lint].select).
+# WHY: Some files must not be auto-modified.
 "src/**/__init__.py" = ["F401"]     # Allow re-export patterns
 "src/**/_version.py" = ["ALL"]      # Auto-generated file (do not lint)
+"tests/**/*.py" = ["D", "B018", "B011", "S101"]
+"src/**/py.typed" = ["ALL"]
 "notebooks/**/*.ipynb" = ["F821"]   # Notebooks may have runtime-defined names
-
-# OPTIONAL: If docstring rules are enabled later (add "D" to select),
-# replace the block above with the following:
-#
-# [tool.ruff.lint.per-file-ignores]
-# "src/**/__init__.py" = ["D104", "F401"]    # Allow omission + re-export patterns
-# "src/**/_version.py" = ["ALL"]             # Auto-generated file (do not lint)
-# "tests/**/*.py" = ["D"]                    # Tests have different docstring norms
-# "notebooks/**/*.ipynb" = ["F821"]          # Notebooks may have runtime-defined names
 
 # === CHOOSE PROJECT DOC STYLE ===
 
@@ -126,8 +108,8 @@ convention = "google"
 [tool.uv]
 # WHY: Install all dependency groups defined by this repository by default.
 # This keeps the canonical setup command identical across project types while
-# allowing each repository to declare only the tooling it actually needs.
-default-groups = "all"   # ALT: "numpy" — choose one, never mix.
+# allowing each repository to declare only the tooling it  needs.
+default-groups = "all"
 
 # ============================================================
 # SECTION 3: BUILD SYSTEM (boilerplate; CUSTOM src/ agreement)

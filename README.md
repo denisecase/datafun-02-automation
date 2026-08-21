@@ -2,52 +2,116 @@
 
 [![Workflow Guide](https://img.shields.io/badge/Pro--Guide-pro--analytics--02-green)](https://denisecase.github.io/pro-analytics-02/workflow-b-apply-example-project/)
 [![Python 3.14](https://img.shields.io/badge/python-3.14%2B-blue?logo=python)](./pyproject.toml)
+[![uv managed](https://img.shields.io/badge/uv-managed-DE5FE9)](https://docs.astral.sh/uv/)
+[![ty type checked](https://img.shields.io/badge/ty-type_checked-2F80ED)](https://docs.astral.sh/ty/)
+[![Zensical docs](https://img.shields.io/badge/Zensical-docs-purple)](https://zensical.org/)
 [![MIT](https://img.shields.io/badge/license-see%20LICENSE-yellow.svg)](./LICENSE)
 
-> Professional Python project: automation with loops, branches, and functions.
+> Professional Python project: automation with loops and branching.
+
+## Our Approach: Learn by Doing
 
 Data analytics requires a variety of skills.
 This course builds capabilities through working projects.
-
-In the age of generative AI, durable skills are grounded in real work:
+**Durable skills** are grounded in real work:
 setting up a professional environment,
 reading and running code,
 understanding the logic,
 and pushing work to a shared repository.
-Each project follows the structure of professional Python projects.
-We learn by doing.
+Each example is a professional Python project.
 
-## This Project
+## Start By Running this Example
 
-This project introduces **automation**, using code to repeat a set of logic without doing it manually.
+After completing **Workflow A: Set Up Your Machine** in
+[pro-analytics-02](https://denisecase.github.io/pro-analytics-02/),
+then clone this example project and run it
+using the provided **Workflow B: Apply Example Project**.
 
-Think of logic you might want to repeat:
+NOTE: Getting a professional Python environment set up and successfully
+running an example project can be the most challenging part.
+Go slow, follow the detailed instructions and post in the discussions
+when things don't go as planned.
 
-- logic for each number in a sequence
-- logic for each item in a list
-- converting a list into another list
-- logic that repeats while a condition is true
+**Once the example runs**, you know you are in good shape.
+**Only after that** is it time to read the project,
+understand what it does, and start playing with it.
 
-You will run the example module, read the code,
-and apply the same patterns to automate your own logic.
+## Project Motivation
+
+Explore data while learning some Python basics like branching and repetition.
+Analysts often **repeat logic** (e.g. do the same thing for each observation/row
+in a dataset) and **branch based on conditions**.
+For example, **if** a missing value is detected,
+**then** we apply special instructions.
+
+## Use Python to Automate Logic
+
+Python helps automate our analysis.
+We will use:
+
+- a `for` loop to repeat work for each item in a list
+- a **list comprehension** to transform one list into another
+- `if / elif / else` to branch based on conditions
+- a `while` loop to repeat work while a condition is true
+
+## Custom Narrative (Extracted from Output)
+
+Selected group column: **species**
+
+Reason for choosing this group:
+
+The species column has a small number of unique values.
+There are three unique species, so a for loop can
+process and log each one.
+
+Selected measurement column: **bill_length_mm**
+
+Reason for choosing this measurement:
+
+Bill length varies across penguins.
+There is no fixed cutoff, so we'll calculate the average
+and assign a classification depending on a threshold
+around the average value.
+
+```text
+Sample bill_length_mm: 39.1
+Short threshold multiplier: 0.9
+Long threshold multiplier:  1.1
+Short threshold: 39.529736842105265
+Long threshold:  48.31412280701755
+First row bill_length_mm classification: SHORT
+
+Max records to process: 10
+Stream wait seconds: 1
+```
+
+See [project.log](project.log) for more.
+
+## Initial Results
+
+The project creates a histogram showing the distribution
+of the selected numeric measurement.
+
+![Histogram of the selected measurement](docs/images/measurement-distribution.png)
 
 ## Working Files
 
-You'll work with just these areas:
+Work with just these areas:
 
+- **data/** - the CSV data file
+- **src/datafun/** - the Python logic
 - **docs/** - the project narrative and documentation
-- **src/datafun** - where the magic happens
-- **pyproject.toml** - update authorship & links
-- **zensical.toml** - update authorship & links
+- **pyproject.toml** - project metadata
+- **zensical.toml** - documentation site config
 
-## Instructions
+## Common Workflow
 
 Follow the
 [step-by-step workflow guide](https://denisecase.github.io/pro-analytics-02/workflow-b-apply-example-project/)
 to complete:
 
 1. Phase 1. **Start & Run**
-2. Phase 2. **Change Authorship**
+2. Phase 2. **Take Ownership**
 3. Phase 3. **Read & Understand**
 4. Phase 4. **Modify**
 5. Phase 5. **Apply**
@@ -61,16 +125,16 @@ Working through issues is part of implementing professional projects.
 
 ## Success
 
-After completing Phase 1. **Start & Run**, you'll have your own GitHub project,
-running on your machine, and running the example will print out:
+After completing Phase 1. **Start & Run**, you'll have the example project,
+running on your machine.
+A new file `project.log` will appear in the root project folder
+and running the example script will print out:
 
 ```shell
-========================
-Executed successfully!
-========================
+===================================
+END main() - Executed successfully!
+===================================
 ```
-
-A new file `project.log` will appear in the root project folder.
 
 ## Command Reference
 
@@ -84,12 +148,12 @@ Follow the guide for the **full instructions**.
 
 ### In a machine terminal (open in your `Repos` folder)
 
-After you get a copy of this repo in your own GitHub account,
-open a machine terminal in your `Repos` folder:
+Open a machine terminal in your `Repos` folder,
+change directory (cd) into the new folder,
+and run `code .` to open only this example project in VS Code:
 
 ```shell
-# Replace username with YOUR GitHub username.
-git clone https://github.com/username/datafun-02-automation
+git clone https://github.com/denisecase/datafun-02-automation
 
 cd datafun-02-automation
 code .
@@ -150,7 +214,7 @@ git push -u origin main
 - Use `CTRL+f` to find (and replace) text within a file.
 - You do not need to add to or modify `tests/`. They are provided for example only.
 - Many files are silent helpers. Explore as you like, but nothing is required.
-- You do NOT not to understand everything; understanding builds naturally over time.
+- You do NOT need to understand everything; understanding builds naturally over time.
 
 ## Troubleshooting >>>
 
@@ -159,50 +223,22 @@ You accidentally started Python interactive mode.
 It happens.
 Press `Ctrl+c` (both keys together) or `Ctrl+Z` then `Enter` on Windows.
 
-## Example Output
+## Documentation
 
-```shell
-| P02 | ========================
-| P02 | START main()
-| P02 | ========================
-| P02 | ========================
-| P02 | FUNCTION 1: for loop over a numeric range
-| P02 | ========================
-| P02 | First quarter: 1
-| P02 | Last quarter:  4
-| P02 | Wrote file: case_quarter_1.txt
-| P02 | Wrote file: case_quarter_2.txt
-| P02 | Wrote file: case_quarter_3.txt
-| P02 | Wrote file: case_quarter_4.txt
-| P02 | ========================
-| P02 | FUNCTION 2: for loop over a list
-| P02 | ========================
-| P02 | Pet list: ['dog', 'cat', 'fish']
-| P02 | Wrote file: case_dog.txt
-| P02 | Wrote file: case_cat.txt
-| P02 | Wrote file: case_fish.txt
-| P02 | ========================
-| P02 | FUNCTION 3: list comprehension
-| P02 | ========================
-| P02 | Original list: ['dog', 'cat', 'fish']
-| P02 | Transformed list: ['favorite_dog', 'favorite_cat', 'favorite_fish']
-| P02 | Wrote file: case_favorite_dog.txt
-| P02 | Wrote file: case_favorite_cat.txt
-| P02 | Wrote file: case_favorite_fish.txt
-| P02 | ========================
-| P02 | FUNCTION 4: while loop with counter
-| P02 | ========================
-| P02 | Files to create: 3
-| P02 | Seconds between files: 1
-| P02 | Wrote file: case_01.txt
-| P02 | Waiting 1 second(s)...
-| P02 | Wrote file: case_02.txt
-| P02 | Waiting 1 second(s)...
-| P02 | Wrote file: case_03.txt
-| P02 | Waiting 1 second(s)...
-| P02 | ========================
-| P02 | Executed successfully!
-| P02 | ========================
-```
+- [Documentation](https://denisecase.github.io/datafun-02-automation/)
 
-![VS Code When Running](./docs/images/vscode_when_running.png)
+## Data Card
+
+- [Palmer Penguins Data Card](./docs/data-card.md)
+
+## Annotations
+
+- [.annotations/annotations.md](./.annotations/annotations.md)
+
+## Citation
+
+- [CITATION.cff](./CITATION.cff)
+
+## License
+
+This project is licensed under the [MIT License](./LICENSE).

@@ -1,71 +1,59 @@
-# Project Instructions (DataFun Module 2)
+# Project-Specific Instructions
 
 ## WEDNESDAY: Complete Workflow Phases 1-3
 
 Follow the instructions in
-[⭐ **Workflow: Apply Example**](https://denisecase.github.io/pro-analytics-02/workflow-b-apply-example-project/)
+[**Workflow: Apply Example Project**](https://denisecase.github.io/pro-analytics-02/workflow-b-apply-example-project/)
 to complete:
 
-1. Phase 1. **Start & Run** - copy the project and confirm it runs
-2. Phase 2. **Change Authorship** - update the project to your name and GitHub account
-3. Phase 3. **Read & Understand** - review the project structure and code
-
-Open `notebooks/eda.ipynb` in VS Code, select the kernel (`.venv`), and run all cells.
-Confirm the notebook executes without errors and commit it with output visible.
+1. Phase 1. **Start & Run**
+2. Phase 2. **Take Ownership**
+3. Phase 3. **Read & Understand**
 
 ## FRIDAY/SUNDAY: Complete Workflow Phases 4-5
 
 Again, follow the instructions above to complete:
 
-1. Phase 4. **Make a Technical Modification** - make a change and verify it still runs
+1. Phase 4. **Make a Technical Modification**
 2. Phase 5. **Apply the Skills to a New Problem**
 
-## Phase 4 Suggestions
+## Phase 4: First Technical Modification
 
-Make a small technical change to the example notebook that does not break it.
-Choose any one of these (or a different modification as you like):
+Make one small change to your new working project.
+Then, run the project again and verify your change works.
+For example, you might:
 
-- Change `PET_LIST` to use three different animals
-- Change `FIRST_QUARTER` and `LAST_QUARTER` to create files for a different range
-- Change `FILE_COUNT` from `3` to another reasonably small number
-- Change the file name prefix from `case_` to another short word
-- Change the text written inside one type of generated file
+- Choose a different numeric column for the measurement.
+  Look at the datafile and columns to see which numeric columns might be interesting.
 
-Re-run all cells after your change and confirm the notebook executes cleanly.
-Commit with output visible.
+Make your change, then run the project again and inspect the output.
+If your change causes an error, read the message, correct the problem,
+and rerun the project.
+Follow this "debugging" process until it works again.
+You can always revert (CTRL z) to get back to the way it was.
 
-## Phase 5 Suggestions
+## Phase 5: Custom Project
 
-For Phase 5, apply the same automation pattern to a new problem domain.
+Keep the penguins dataset and make the analysis yours
+by selecting a different numeric **measurement** column,
+and establish reasonable thresholds for classification
+while explaining your choices in **app.py**.
 
-For example you might pick one of these domains instead (or another of your choice):
-
-- favorite foods
-- favorite cities
-- course names
-- product names
-- months
-- seasons
-- hobbies
-- book genres
-- music genres
-
-The goal is not to write a large application.
-The goal is to show that you can copy a working automation pattern,
-change it carefully, and run it successfully.
-
-## Key Skill Focus
-
-As you work, focus on:
-
-- how Python repeats work with `for` loops, `while` loops, and list comprehensions
-- how branching can help a program make decisions
-- how functions organize repeated logic
-- how constants make a program easier to modify
-- how `pathlib` helps create cross-platform file paths
-- how logging records what happened while the program ran
-- how generated files show the result of automation
+A more independent version might use another appropriate tabular dataset.
 
 ## Professional Communication
 
-Make sure your project clearly shows what you changed.
+Make sure your repository correctly presents and reflects **your work**.
+Remove educational instructions that are no
+longer needed and verify key areas **showcase your skills**:
+
+- README.md
+- docs/
+- src/
+
+The example projects are MIT licensed.
+You are free to use and modify as you like.
+
+---
+
+[◄ Back to Home](index.md)

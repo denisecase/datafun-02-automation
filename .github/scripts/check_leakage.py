@@ -126,7 +126,7 @@ def read(root: Path, rel: str) -> str | None:
         return None
     try:
         return p.read_text(encoding="utf-8")
-    except (OSError, UnicodeDecodeError):
+    except OSError, UnicodeDecodeError:
         return None
 
 
