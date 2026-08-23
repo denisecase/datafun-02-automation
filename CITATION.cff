@@ -1,0 +1,58 @@
+# ============================================================
+# CITATION.cff (How to cite this project)
+# ============================================================
+
+# REQ.UNIVERSAL: Professional open projects SHOULD include this file.
+# WHY: Support correct citation and attribution.
+# ALT: Internal or private repositories may omit citation metadata.
+# CUSTOM: Update author, repository, license, and keyword fields as needed.
+# USAGE: See https://citation-file-format.github.io/ for details.
+
+cff-version: "1.2.0"
+message: "If using this work, please cite it as described in this file."
+type: software
+
+title: "datafun-02-automation"
+version: "1.2.0"
+date-released: "2026-08-20"
+
+authors:
+  - family-names: Case
+    given-names: Denise M.
+    orcid: "https://orcid.org/0000-0001-6165-7389"
+    affiliation: "Northwest Missouri State University, School of Computer Science and Information Systems, Maryville, MO, USA"
+
+repository-code: "https://github.com/denisecase/datafun-02-automation"
+url: "https://github.com/denisecase/datafun-02-automation"
+license: MIT
+
+abstract: >
+  Introductory data analytics project focused on Python data types
+  and repetition using loops and simple automation patterns.
+  Emphasis is placed on clear, repeatable logic
+  and reinforcement of professional project structure and workflows.
+
+keywords:
+  - data-analytics
+  - analytics-foundations
+  - data-exploration
+  - data-inspection
+  - pandas
+  - logging
+  - professional-python
+  - src-layout
+  - reproducible-workflows
+  - software-quality
+  - ci-cd
+  - github-actions
+  - python
+  - git
+  - github
+  - open-source
+  - uv
+  - ruff
+  - pre-commit
+  - ty
+  - hatchling
+  - zensical
+  - data-analytics-education
