@@ -94,15 +94,12 @@ of the selected numeric measurement.
 
 ![Histogram of the selected measurement](docs/images/measurement-distribution.png)
 
-## Working Files
-
-Work with just these areas:
+## Important Folders and Files
 
 - **data/** - the CSV data file
-- **src/datafun/** - the Python logic
 - **docs/** - the project narrative and documentation
-- **pyproject.toml** - project metadata
-- **zensical.toml** - documentation site config
+- **src/datafun/** - the Python instructions
+- **zensical.toml** - update authorship & links
 
 ## Common Workflow
 
