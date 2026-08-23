@@ -100,7 +100,9 @@ hide differences in performance across species, sex, or island.
 - [Palmer Penguins data documentation](https://allisonhorst.github.io/palmerpenguins/articles/intro.html)
 - [Data Cards Playbook (toolkit)](https://pair-code.github.io/datacardsplaybook/)
 - Data Cards convention: Pushkarna, Zaldivar, and Kjartansson (2022),
-  _Data Cards: Purposeful and Transparent Dataset Documentation for Responsible AI_, ACM FAccT. <https://doi.org/10.1145/3531146.3533231>
+  _Data Cards:_
+  _Purposeful and Transparent Dataset Documentation for Responsible AI_,
+  ACM FAccT. <https://doi.org/10.1145/3531146.3533231>
 
 ---
 

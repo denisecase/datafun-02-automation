@@ -2,14 +2,19 @@
 
 > Key concepts introduced in this module.
 
-<!-- Only the first sentence/paragraph of h3 entries
-are used for the integrated quiz. -->
+<!--
+Only the first sentence/paragraph of h3 entries
+are used for the integrated quiz.
+Wrap code terms in double asterisks
+rather than single backtics so they can be read aloud.
+-->
 
 ## Programming Foundations
 
 ### Sequential Execution
 
-Runs instructions in order, once each, from top to bottom.
+**Sequential execution** runs instructions in order,
+once each, from top to bottom.
 
 Python uses sequential execution.
 Useful programs often need more control than this:
@@ -41,7 +46,8 @@ else:
 
 ### Boolean Expressions
 
-A condition that evaluates to **True** or **False**.
+A **Boolean expression** is a condition that
+evaluates to **True** or **False**.
 
 It is what branching and repetition test against.
 
@@ -91,9 +97,9 @@ while running:
 
 ### List Comprehension (List to new List)
 
-A compact **for** loop that builds
-a new list by transforming an existing one,
-and is a good choice when the transformation is very simple.
+A **list comprehension** is a compact **for** loop that builds
+a new list by transforming an existing one
+with a simple transformation.
 
 ```python
 upper_names = [name.upper() for name in names]
@@ -103,7 +109,7 @@ upper_names = [name.upper() for name in names]
 
 ### State
 
-The information a program remembers while it runs,
+**State** is the information a program remembers while it runs,
 held in variables that change as the work proceeds.
 
 A repeating program might track how many items
