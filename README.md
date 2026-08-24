@@ -11,7 +11,6 @@
 
 ## Our Approach: Learn by Doing
 
-Data analytics requires a variety of skills.
 This course builds capabilities through working projects.
 **Durable skills** are grounded in real work:
 setting up a professional environment,
@@ -20,21 +19,10 @@ understanding the logic,
 and pushing work to a shared repository.
 Each example is a professional Python project.
 
-## Start By Running this Example
+## First, Make Sure Your Machine is Set Up
 
-After completing **Workflow A: Set Up Your Machine** in
-[pro-analytics-02](https://denisecase.github.io/pro-analytics-02/),
-then clone this example project and run it
-using the provided **Workflow B: Apply Example Project**.
-
-NOTE: Getting a professional Python environment set up and successfully
-running an example project can be the most challenging part.
-Go slow, follow the detailed instructions and post in the discussions
-when things don't go as planned.
-
-**Once the example runs**, you know you are in good shape.
-**Only after that** is it time to read the project,
-understand what it does, and start playing with it.
+Complete **Workflow A: Set Up Your Machine** in
+[pro-analytics-02](https://denisecase.github.io/pro-analytics-02/).
 
 ## Project Motivation
 
@@ -106,6 +94,10 @@ of the selected numeric measurement.
 Follow the
 [step-by-step workflow guide](https://denisecase.github.io/pro-analytics-02/workflow-b-apply-example-project/)
 carefully.
+
+Why? Because getting a Python project running your
+machine requires many parts working together -
+and once it runs, it makes everything else possible.
 
 ## Challenges
 

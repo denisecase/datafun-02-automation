@@ -85,7 +85,7 @@ filterwarnings = [
 [tool.ruff.lint] # WHY: Evolve with Ruff's defaults; production might pin an explicit set.
 extend-select = [
     # --- turn on for additional linting rules ---
-    "D",  # WHY: Require docstrings; VS Code helps generate them.
+    # "D",  # WHY: Require docstrings; VS Code helps generate them.
 ]
 
 [tool.ruff.lint.isort] # WHY: Sort plain-import and from-import lines together within each section.
